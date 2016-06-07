@@ -1,0 +1,16 @@
+DummySemaphore
+_sem_lock
+__init__
+_decorate
+BoundedSemaphore
+_around
+absolute_import
+__all__
+PYPY
+_Sem_init
+_allocate_lock
+Semaphore
+_get_ident
+_OwnedLock
+getcurrent
+RLock

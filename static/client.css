@@ -1,0 +1,374 @@
+body {
+	background-color: #6998CE;
+	margin: 0px;
+	padding: 0px 0px 20px 0px;
+	font-family: Verdana, Georgia, serif;
+	font-size: 14px;
+    overflow:auto;
+}
+
+/* 	===============================================================
+	.....................Welcome view
+	=============================================================== */
+	
+#form1 {
+	width: 248px;
+	height:84px;
+}
+
+#form2 {
+	width: 248px;
+	height: 252px;
+}
+
+h2.one {
+	margin: 0px 0px 10px 0px;
+	text-align: center;
+	width: 248px;
+	height:27px;
+}
+
+.pbody {
+	position: fixed;
+	height: 400px;
+	width: 600px;
+	left: 50%;
+	margin-top: 100px;
+	margin-left: -300px;
+	padding: 0px;
+}
+
+.pimg {
+	height: 398px;
+	width: 338px;
+	margin: 0px;
+	padding:0px;
+	border: 1px solid #14141f;
+	border-radius: 0px;
+}
+
+.pfrm1 {
+	background-color: white;
+	padding: 5px 1px 0px 1px; 
+	float: right;
+	width: 248px;
+	height: 85px;
+	border-radius: 0px;
+	border: 1px solid #14141f;
+	margin: 0px 0px 10px 0px;
+
+	clear: right;
+}
+
+.pfrm2 {
+	background-color: white;
+	padding: 5px 1px 0px 1px; 
+	float: right;
+	width: 248px;
+	height: 291px;
+	border-radius: 0px;
+	border: 1px solid #14141f;
+	margin: 0px;
+
+	clear: right;
+}
+
+.txtbox {
+	float: right;
+	width: 60%;
+	height: 23px;
+	padding: 0px;
+	/* margin: 3px; */
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	clear: right;
+}
+
+.txtline {
+	padding: 0px;
+	height: 28px;
+}
+
+.button {
+	float: right;
+	clear: right;
+}
+
+/* 	===============================================================
+	.....................Profile view
+	=============================================================== */
+	
+.pbody2 {
+	position: fixed;
+	height: 800px;
+	width: 600px;
+	left: 50%;
+	margin-top: 100px;
+	margin-left: -300px;
+	padding: 0px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}
+
+.active {
+    /*background-color: #4CAF50;*/
+	background-color: #4CAF50;
+}
+
+.noactive {
+	background-color: #333;
+}
+
+.display_here {
+	display:none;
+}
+ /* by defoult the Home_display will be displaied */
+#Home_display {
+	display:block;
+}
+
+/* 	===============================================================
+	.....................Account
+	=============================================================== */
+.form_left {
+	position: absolute;
+	margin-top:0px;
+	width:594px;
+	height:200px;
+	padding:3px;
+	background: #4CAF50;
+	
+}
+
+#for_form {
+    position: relative;
+    width:594px;
+	height:260px;
+	padding:3px;
+}
+
+#mycanvas {
+    position: absolute;
+    /*width: 500px;
+    height: 300px;*/
+    left: 50%;
+    margin-left: -250px;
+    /*background: #6998CE;*/
+    display: block;
+}
+
+#ch_psw_txt {
+	position: absolute;
+	width:500px;
+	left:50%;
+	margin-left:-250px;
+}
+
+/* 	===============================================================
+	.....................Home
+	=============================================================== */
+
+.home_tot {
+	position: fixed;
+	
+	width: 600px;
+	padding: 0px;
+	margin-top:0px;
+	background: #4CAF50;
+	
+}
+
+#bPost1 {
+	height:78px;
+	width:600px;
+}
+
+/* #bPost2 {
+	height:46px;
+	width:21px;
+} */ 
+
+.messages {
+	width: 594px;
+	height: 300px;
+	/*background: red;*/
+	padding: 3px;
+	overflow:auto;
+}
+
+.personal {
+	height: 165px;
+	width: 594px;
+	padding: 0px;
+	/*background: purple;*/
+	margin-top:0px;
+	padding:3px;
+	font-size:14px;
+}
+
+.post_area {
+	width: 594px;
+	height: 188px;
+	/*background: blue;*/
+	padding: 0px;
+	padding:3px;
+}
+
+.text_to_post {
+	height: 75px;
+	width: 594px;
+	margin:0px;
+	padding: 3px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	border-color:grey;
+	resize: none;
+}
+
+.wall_post {
+    padding: 3px;
+    border-top: 2px solid #000;
+    
+}
+
+/* 	===============================================================
+	.....................Browse
+	=============================================================== */
+.browse_tot {
+	position: fixed;
+	
+	width: 600px;
+	padding: 0px;
+	margin-top:0px;
+	background: #4CAF50;
+	
+}
+
+.browser {
+	width: 594px;
+	height: 90px;
+	/*background: blue;*/
+	padding: 0px;
+	padding:3px;	
+}
+
+#browse_bPost1_browse {
+	width:600px;
+	height:28px;
+	margin-top:10px;
+}
+
+#email_browse {
+	height: 25px;
+	width: 594px;
+	margin:0px;
+	padding: 3px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.post_area_browse {
+	width: 594px;
+	height: 157px;
+	/*background: blue;*/
+	padding: 0px;
+	padding:3px;
+}
+
+
+/* 	===============================================================
+	.....................Err block
+	=============================================================== */
+
+.errblock {
+	position: fixed;
+	height: 18px;
+	width: 598px;
+	left: 50%;
+	margin-top: 410px;
+	margin-left: -300px;
+	padding: 3px 0px 3px 0px;
+	background-color:white;
+	text-align:center;
+	color:red;
+	font-size:14px;
+	border: 1px solid #14141f;
+	border-radius: 0px;
+}
+
+.errblock_account {
+	position: fixed;
+	height: 18px;
+	width: 598px;
+	left: 50%;
+	margin-top: 220px;
+	margin-left: -300px;
+	padding: 3px 0px 3px 0px;
+	background-color:white;
+	text-align:center;
+	color:red;
+	font-size:14px;
+	border: 1px solid #14141f;
+	border-radius: 0px;
+}
+
+.errblock_home {
+	position: fixed;
+	height: 18px;
+	width: 598px;
+	left: 50%;
+	margin-top: 25px;
+	margin-left: -300px;
+	padding: 3px 0px 3px 0px;
+	background-color:white;
+	text-align:center;
+	color:red;
+	font-size:14px;
+	border: 1px solid #14141f;
+	border-radius: 0px;
+}
+
+.errblock_browse {
+	position: fixed;
+	height: 18px;
+	width: 598px;
+	left: 50%;
+	margin-top: 25px;
+	margin-left: -300px;
+	padding: 3px 0px 3px 0px;
+	background-color:white;
+	text-align:center;
+	color:red;
+	font-size:14px;
+	border: 1px solid #14141f;
+	border-radius: 0px;
+	
+}
+
+

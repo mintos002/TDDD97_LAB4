@@ -1,0 +1,4 @@
+ProtocolError
+WebSocketError
+socket_error
+FrameTooLargeException
