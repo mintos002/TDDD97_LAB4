@@ -477,7 +477,7 @@ function loadWall () {
 
             if (result.success) {
                 for (i = 0; i < result.data.length ; i++) {
-                    place_to_post.innerHTML += '<div id="HV_' + i + '" class="wall_post" draggable="true" ondragstart="drag(event)"><h4>Post by: ' + result.data[i][0] + '</h4><p>' + result.data[i][1] + '</p></div>';
+                    place_to_post.innerHTML += '<div class="well well-sm" draggable="true" ondragstart="drag(event)" id="HV_' + i + '"><h4>Post by: ' + result.data[i][0] + '</h4><p>' + result.data[i][1] + '</p></div>';
                 }
             } else {
                 show_errmessage(result.message, "div_error_home");
@@ -668,7 +668,7 @@ function loadWall_browse () {
 
 	        if (result.success) {
 	            for (i = 0; i < result.data.length ; i++) {
-	                place_to_post.innerHTML += '<div class="wall_post"><h4>Post by: ' + result.data[i][0] + '</h4><p>' + result.data[i][1] + '</p></div>';
+	                place_to_post.innerHTML += '<div class="well well-sm"  draggable="true" ondragstart="drag(event)" id="BV_' + i + '"><h4>Post by: ' + result.data[i][0] + '</h4><p >' + result.data[i][1] + '</p></div>';
 	            }
 	        } else {
 	            show_errmessage(result.message, "div_error_browse");
@@ -801,41 +801,33 @@ function update_chart(sent, received, users) {
 
 // Prevent default behaviour of drop zone
 function allowDrop(ev) {
+    /* The default handling is to not allow dropping elements. */
+    /* Here we allow it by preventing the default behaviour. */
     ev.preventDefault();
+    console.log("allowDrop")
 }
 
-// What to do while draggin an element
 function drag(ev) {
-    // Save post content of dragged post as variable
-    ev.dataTransfer.setData("text", ev.target.id.innerHTML);
-    var drop = document.getElementById("text_to_post");
-    var ta = drop.previousElementSibling;
-
-    // Overlay textarea with div prompting user to drop post there
-    drop.style.width = ta.offsetWidth;
-    drop.style.height = ta.offsetHeight;
-    drop.style.lineHeight = ta.offsetHeight + "px";
-    ta.style.display = "none";
-    drop.style.display = "block";
+    /* Here is specified what should be dragged. */
+    /* This data will be dropped at the place where the mouse button is released */
+    /* Here, we want to drag the element itself, so we set it's ID. */
+    ev.dataTransfer.setData("text", ev.target.id);
+    console.log("drag(ev)")
 }
 
- // Reset textare and overlaying div when item is released
-function release(dropID) {
-    var drop = document.getElementById(dropID);
-    var ta = drop.previousElementSibling;
-    drop.style.display = "none";
-    ta.style.display = "block";
-}
 
-// If dropped in the correct zone, text variable will be copied into textarea value
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    // create a new copy
+    /* If you use DOM manipulation functions, their default behaviour it not to 
+       copy but to alter and move elements. By appending a ".cloneNode(true)", 
+       you will not move the original element, but create a copy. */
+    var str = document.getElementById(data).innerHTML;
+    res = str.replace(/<h4>|:|<\/p>/g, "").replace(/<\/h4><p>/g,": \r");
 
-    var nodeCopy = document.getElementById(data).cloneNode(true);
-    nodeCopy.id = "newID"
-    ev.target.appenedChild(nodeCopy);
+    ev.target.value = res;
+    console.log(res)
+    console.log("drop(ev)")
 }
 
 //END DRAG&DROP

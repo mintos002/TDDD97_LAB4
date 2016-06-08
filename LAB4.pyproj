@@ -36,7 +36,12 @@
     <Content Include="static\client.html" />
     <Content Include="static\client.js" />
     <Content Include="static\bar.js" />
+    <Content Include="static\app.js" />
     <Content Include="static\prueba.html" />
+    <Content Include="static\views\browse.html" />
+    <Content Include="static\views\home.html" />
+    <Content Include="static\views\account.html" />
+    <Content Include="static\views\welcome.html" />
     <Content Include="static\wimage.png" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="static\" />
+    <Folder Include="static\views\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="database_helper.py" />
