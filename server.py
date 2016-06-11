@@ -45,6 +45,8 @@ def sign_in():
         token = (''.join(choice(ascii_uppercase + ascii_lowercase + digits) for i in range(36)));
         try:
             database_helper.add_logged_in_user(email,token)
+            # update online users
+            live_data(None, {"id": "update_chart", "online": database_helper.get_num_users_online()[0], "sent": -1, "received": -1});
             return jsonify(success = True, message = "Successfully signed in.", data = token)
         except sqlite3.IntegrityError:
                return jsonify(success = False, message = "You are already signed in.")
@@ -98,6 +100,8 @@ def sign_out():
     # If it is:
     if(email is not None):
         database_helper.delete_logged_in_by_token(token)
+        #Update chart
+        live_data(None, {"id": "update_chart", "online": database_helper.get_num_users_online()[0], "sent": -1, "received": -1});
         return jsonify(success = True, message = "Successfully signed out.")
     else:
         return jsonify(success = False, message = "You are not logged in.")
@@ -221,6 +225,15 @@ def post_message():
         else:
             try:
                 database_helper.post_message(fromEmail[0], toEmail, message);
+                # Update chart
+                if (toEmail == fromEmail[0]):
+                    print "PM EQUALS............."
+                    live_data(fromEmail[0], {"id": "update_chart", "online": -1, "sent": database_helper.get_num_messages_sent(fromEmail[0])[0], "received": database_helper.get_num_messages_received(toEmail)[0]})
+
+                else:
+                    print "PM NO EQ............."
+                    live_data(fromEmail[0], {"id": "update_chart", "online": -1, "sent": database_helper.get_num_messages_sent(fromEmail[0])[0], "received":-1})
+                    live_data(toEmail, {"id": "update_chart", "online":-1, "sent": -1, "received": database_helper.get_num_messages_received(toEmail)[0]})
                 return jsonify(success = True, message = "Message posted.")
             # Catching IntegrityError
             except sqlite3.IntegrityError:
@@ -313,6 +326,26 @@ def websocket():
     return
 
 # END WEBSOCKET
+
+#FUNCTIONS
+def live_data(email, livedata):
+    if email is None:
+        # Send to all in socket_list
+        for key, value in socket_list.items():
+            try:
+                print livedata
+                value.send(json.dumps(livedata))
+            except:
+                print "ERROR live_data2"
+                
+    else:
+        # Send to email in socket_list
+        try:
+            print email
+            socket_list[email].send(json.dumps(livedata))
+        except:
+            print "ERROR live_data2"
+
 
 if __name__ == '__main__':
     app.debug=True

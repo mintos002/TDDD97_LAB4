@@ -89,7 +89,12 @@ ws.onmessage = function (response) {
 
     else if (message.id == "update_chart") {
         console.log("WebSocket Chart updating");
+        console.log(message)
         update_chart(message.sent, message.received, message.online);
+    }
+
+    else {
+    	console.log(message)
     }
 
 };
@@ -309,7 +314,7 @@ function profile_display(clicked_id) {
             show_errmessage("You have been logged out.");
             return;
         }
-    });
+    }); 
 
     endChart();
 
@@ -757,14 +762,14 @@ function initChart() {
             chart = new Chart(ctx).Bar(data, options);
 
             // to update the chart automatically
-            chartInterval = setInterval(function () {
+            /*chartInterval = setInterval(function () {
                 // Request data from the database with websockets
                 var update_chart = new Object();
                 update_chart.id = "update_chart";
                 update_chart.token = sessionStorage.getItem("token");
                 //sendMessage(JSON.stringify(update_chart));
                 ws.send(JSON.stringify(update_chart));
-            }, 5000);
+            }, 5000);*/
 
         } else {
             console.log("Can't initChart.")
@@ -790,9 +795,24 @@ function endChart() {
 
 function update_chart(sent, received, users) {
     // Updates the bar values
-    chart.datasets[0].bars[0].value = sent;
-    chart.datasets[0].bars[1].value = received;
-    chart.datasets[0].bars[2].value = users;
+    if(sent == -1 && received == -1){
+    	console.log("*** users")
+    	chart.datasets[0].bars[2].value = users;
+    }
+    else if(users == -1 && received == -1){
+    	console.log("*** sent")
+    	chart.datasets[0].bars[0].value = sent;
+
+    }
+    else if(users == -1 && sent == -1){
+    	console.log("*** received")
+    	chart.datasets[0].bars[1].value = received;
+    }
+    else if(users == -1 && received != -1 && sent != -1){
+    	console.log("*** sent and received")
+    	chart.datasets[0].bars[0].value = sent;
+    	chart.datasets[0].bars[1].value = received;
+    }
     chart.update();
 }
 // END CHART
